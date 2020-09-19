@@ -1,0 +1,46 @@
+[07-Sep-2020 09:50:29 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:31:54 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:31:54 America/New_York] PHP Notice:  Undefined index: user in /home/goldadsp/public_html/users/inc/sidebar.php on line 7
+[08-Sep-2020 05:31:58 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:31:58 America/New_York] PHP Notice:  Undefined index: user in /home/goldadsp/public_html/users/inc/sidebar.php on line 7
+[08-Sep-2020 05:31:58 America/New_York] PHP Notice:  Undefined index: user in /home/goldadsp/public_html/users/refrals.php on line 63
+[08-Sep-2020 05:32:17 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:32:17 America/New_York] PHP Notice:  Undefined index: user in /home/goldadsp/public_html/users/inc/sidebar.php on line 7
+[08-Sep-2020 05:32:19 America/New_York] PHP Notice:  Undefined index: user in /home/goldadsp/public_html/users/paid.php on line 4
+[08-Sep-2020 05:32:19 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:32:19 America/New_York] PHP Notice:  Undefined index: user in /home/goldadsp/public_html/users/inc/sidebar.php on line 7
+[08-Sep-2020 05:32:21 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:32:21 America/New_York] PHP Notice:  Undefined index: user in /home/goldadsp/public_html/users/inc/sidebar.php on line 7
+[08-Sep-2020 05:33:30 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:35:50 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:36:50 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:37:21 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:37:34 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:38:25 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:39:58 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:40:27 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:40:37 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:42:01 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:43:08 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:44:14 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:48:39 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:48:41 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:48:45 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:48:49 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:48:52 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:49:48 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:50:12 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:50:17 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:50:19 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[08-Sep-2020 05:52:06 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[11-Sep-2020 07:19:21 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[11-Sep-2020 07:19:21 America/New_York] PHP Notice:  Undefined index: user in /home/goldadsp/public_html/users/inc/sidebar.php on line 7
+[11-Sep-2020 09:18:36 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[11-Sep-2020 09:18:36 America/New_York] PHP Notice:  Undefined index: user in /home/goldadsp/public_html/users/inc/sidebar.php on line 7
+[11-Sep-2020 09:18:43 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[11-Sep-2020 09:18:47 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[11-Sep-2020 09:18:48 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[11-Sep-2020 09:18:50 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[11-Sep-2020 09:18:54 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[11-Sep-2020 09:21:15 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2
+[11-Sep-2020 09:30:50 America/New_York] PHP Notice:  session_start(): A session had already been started - ignoring in /home/goldadsp/public_html/connect/db.php on line 2

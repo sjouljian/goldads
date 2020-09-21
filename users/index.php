@@ -1,4 +1,5 @@
 <?php
+set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
 include_once '../connect/db.php';
 if (!isset($_SESSION['user'])) 
 {
@@ -13,24 +14,15 @@ if (!isset($_SESSION['user']))
    
     <title >Gold Ads Pack</title>
     <!-- <base href="/goldads/" /> -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    
-    <script src="https://kit.fontawesome.com/19d077c931.js" crossorigin="anonymous"></script>
+    <base href="/goldads/" />
+    <?php include('inc/head.php')?>
    
 </head>
 <body>
 <!-- header logo section -->
-<div class="container-fluid" style="background-color: #007c88;">
-  <div class="container">
-    <div class="row">
-      <div class="col-6">
-        <img src="logo.png" id="l-logo"  onclick="window.location.href='index.php#slider';" height="70px" width="70px"/>
-      </div>  
-      
-    </div>     
-  </div>
-</div>
+<?php 
+      include_once 'inc/header.php';
+?>
 
 <!-- slider -->
 <div class="container-fluid how_slider">
@@ -53,51 +45,53 @@ if (!isset($_SESSION['user']))
       <!-- Pie Chart -->
         <?php include_once('inc/sidebar.php'); ?>
 
-        <div class="col-xl-2 col-lg-5">
-            <div class="card shadow mb-4" style="background-color:#CD7F32;">
+    <div class="col-md-9 col-xl-9 col-lg-9">
+    <div class="row mb-4 equal-heights row-packages">
+        <div class="col-xl-3 col-lg-5">
+            <div class="card shadow mb-4" style="background-color:#fff;">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center">
-                    <h6 class="m-0 font-weight-bold" style="color: #007c88;">Package 1</h6>
+                <div class="card-header package-head py-3 d-flex flex-row align-items-center">
+                    <h6 class="m-auto font-weight-bold" style="color: #fff;">Package 1</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body ">
-                    <p class="mb-5">The first package that will user buy is:</p>
-                    <h5 class="mb-5">10$ = 120%</h5>
-                    <button class="btn form control" style="background-color:#007c88; color:white;"  onclick="window.location.href='pay/index.php?pay=10&pre=n';">Purchase</button>
+                    <p class="mb-5 text-center desc">The first package that will user buy is:</p>
+                    <h5 class="mb-5 text-center values">10$ = 120%</h5>
+                    <button class="btn card-btn form control" style="color:white;"  onclick="window.location.href='pay/index.php?pay=10&pre=n';">Purchase</button>
                 </div>
             </div>
               
         </div>
                 <!-- second package      -->
-        <div class="col-xl-2 col-lg-5">
-            <div class="card shadow mb-4" style="background-color:#D3D3D3;">
+        <div class="col-xl-3 col-lg-5">
+            <div class="card shadow mb-4" style="background-color:#fff;">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center">
-                  <h6 class="m-0 font-weight-bold" style="color: #007c88;">Package 2</h6>
+                <div class="card-header package-head py-3 d-flex flex-row align-items-center">
+                  <h6 class="m-auto font-weight-bold" style="color: #fff;">Package 2</h6>
                  </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <p class="mb-5">The second package that will user buy is:</p>
-                    <h5 class="mb-5">20$ = 130%</h5>
-                    <button class="btn form control" style="background-color:#007c88; color:white;"  onclick="window.location.href='pay/index.php?pay=20&pre=n';">Purchase</button>
+                    <p class="mb-5 text-center desc">The second package that will user buy is:</p>
+                    <h5 class="mb-5 text-center values">20$ = 130%</h5>
+                    <button class="btn card-btn form control" style="color:white;"  onclick="window.location.href='pay/index.php?pay=20&pre=n';">Purchase</button>
                     
                 </div>
             </div>
         </div>
                  <!-- third package -->
-                    <div class="col-xl-2">
-                        <div class="card shadow mb-4" style="background-color:#FFD700;">
+                    <div class="col-xl-3">
+                        <div class="card shadow mb-4" style="background-color:#fff;">
                                <!-- Card Header - Dropdown -->
-                            <div class="card-header py-3 d-flex flex-row align-items-center">
-                                <h6 class="m-0 font-weight-bold" style="color: #007c88;">Package 3</h6>
+                            <div class="card-header package-head py-3 d-flex flex-row align-items-center">
+                                <h6 class="m-auto font-weight-bold" style="color: #fff;">Package 3</h6>
                             </div>
                                <!-- Card Body -->
                             <div class="card-body">
-                                <p class="mb-5">The third package that will user buy is:</p>
-                                <h5 class="mb-5">30$ = 140%</h5>
+                                <p class="mb-5 text-center desc">The third package that will user buy is:</p>
+                                <h5 class="mb-5 text-center values">30$ = 140%</h5>
                                
                                     
-                                <button class="btn form control" style="background-color:#007c88; color:white;"  onclick="window.location.href='pay/index.php?pay=30&pre=n';">Purchase</button>
+                                <button class="btn card-btn form control" style="color:white;"  onclick="window.location.href='pay/index.php?pay=30&pre=n';">Purchase</button>
                                 
                             </div>
                         </div>
@@ -105,19 +99,30 @@ if (!isset($_SESSION['user']))
                     <!--fourth package-->
                           <!-- second package      -->
         <div class="col-xl-3 col-lg-5">
-            <div class="card shadow mb-4" style="background-color:#33FF77;">
+            <div class="card shadow mb-4" style="background-color:#fff;">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center">
-                  <h6 class="m-0 font-weight-bold" style="color: #007c88;">Premium</h6>
+                <div class="card-header package-head py-3 d-flex flex-row align-items-center">
+                  <h6 class="m-auto font-weight-bold" style="color: #fff;">Premium</h6>
                  </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <p class="mb-5">The premium package that will user buy is:</p>
-                    <h5 class="mb-5">20$= 10% extra</h5>
-                    <button class="btn form control" style="background-color:#007c88; color:white;"  onclick="window.location.href='pay/index.php?pay=20&pre=y';">Purchase</button>
+                    <p class="mb-5 text-center desc">The premium package that will user buy is:</p>
+                    <h5 class="mb-5 text-center values">20$= 10% extra</h5>
+                    <button class="btn card-btn form control" style="color:white;"  onclick="window.location.href='pay/index.php?pay=20&pre=y';">Purchase</button>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+              <b>Referral link: <a href="https://www.goldadspack.com/?email=<?php echo $email; ?>#slider">https://www.goldadspack.com/?email=<?php echo $email; ?></a</b>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
                  <!-- end package -->
                       </div>
                       </div>

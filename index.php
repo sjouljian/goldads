@@ -63,7 +63,6 @@ if (isset($_POST['reg_btn']))
 <head>
   <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
       <title >Gold Ads Pack</title>
       <base href="/goldads/" />
    <?php include('inc/head.php')?>

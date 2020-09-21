@@ -60,7 +60,7 @@
 $email=$_SESSION['user'];
 
 ?>
-                  <a href="https://www.goldadspack.com/index.php?email=<?php echo $email; ?>#slider">https://www.goldadspack.com/index.php?email=<?php echo $email; ?></a>
+                  <a href="https://www.goldadspack.com/?email=<?php echo $email; ?>#slider">https://www.goldadspack.com/?email=<?php echo $email; ?></a>
                 </div>
               </div>
                 <!-- ////////////////////// -->

@@ -33,7 +33,7 @@
             <div class="card shadow">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center">
-                  <h6 class="m-0 font-weight-bold" style="color: #007c88;">Contact Us</h6>
+                  <h6 class="m-0 font-weight-bold" style="color: #a91c68;">Contact Us</h6>
                  </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-12">
-                        <button type="submit" name="submit" class="btn btn-default form-control" style="background-color:#007c88; color:white;" >SEND MESSAGE</button>
+                        <button type="submit" name="submit" class="btn btn-default btn-submit form-control">SEND MESSAGE</button>
                         </div>
                     </div>
                     </form>

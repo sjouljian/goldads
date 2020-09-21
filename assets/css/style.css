@@ -137,3 +137,36 @@ padding-right: 0px !important;
   .closebtn:hover {
     color: black;
   }
+  .btn.btn-submit{
+      background-color:#a91c68;
+      color:white;
+  }
+  .btn.btn-submit:hover{
+    background-color:#daa628;
+  }
+  .equal-heights .card{
+    height: 100%;
+  }
+  .btn.card-btn{
+      position: absolute;
+      bottom: 20px;
+      left: 0px;
+      right: 0px;
+      margin: auto;
+      background-color: #a91c68;
+  }
+  .card-btn:hover{
+      background-color:#daa628
+  }
+  .left-sidebar .btn{
+      width:100%;
+  }
+  .row-packages .package-head{
+      background-color:#a92069;
+  }
+  .row-packages .desc{
+      color:#2e3b42;
+  }
+  .row-packages .values{
+      color:#000000;
+  }

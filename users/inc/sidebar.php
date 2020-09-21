@@ -1,7 +1,7 @@
 <div class="col-xl-3 col-lg-5">
         <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
-          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <div style="background-color:#a92069;text-align:center" class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 <?php
 set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
 include_once 'connect/db.php';
@@ -36,18 +36,18 @@ function getBaseUrl()
 }
 
 ?>
-            <h6 class="m-0 font-weight-bold" style="color: #007c88;">Balance = <?php echo $sumearn; ?>$</h6>
+            <h6 class="m-auto font-weight-bold" style="color: #fff;">Balance = <?php echo $sumearn; ?>$</h6>
           </div>
         <!-- Card Body -->
-          <div class="card-body">
+          <div class="card-body left-sidebar">
 
-            <a href="<?php echo getBaseUrl();?>users/index.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black;width:180px; ">Dashboard</a>
-            <a href="<?php echo getBaseUrl();?>users/uploadad.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black;width:180px; ">Add Site</a>
-            <a href="<?php echo getBaseUrl();?>users/paid.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black;width:180px; "> Ads</a>
-            <a href="<?php echo getBaseUrl();?>users/withdraw.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black;width:180px; ">Withdraw</a>
-            <a href="<?php echo getBaseUrl();?>users/refrals.php"  class="btn mb-2 bg-light " style=" color:black;width:180px; ">Referral Link</a>
-            <a href="<?php echo getBaseUrl();?>users/contactus.php"  class="btn mb-2 bg-light " style="color:black;width:180px; ">Contact Us</a>
-            <a href="<?php echo getBaseUrl();?>users/logout.php"  class="btn bg-light" style=" color:black; height:40px; width:180px; ">Log Out</a>
+            <a href="<?php echo getBaseUrl();?>users/index.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; ">Dashboard</a>
+            <a href="<?php echo getBaseUrl();?>users/uploadad.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; ">Add Site</a>
+            <a href="<?php echo getBaseUrl();?>users/paid.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; "> Ads</a>
+            <a href="<?php echo getBaseUrl();?>users/withdraw.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; ">Withdraw</a>
+            <a href="<?php echo getBaseUrl();?>users/refrals.php"  class="btn mb-2 bg-light " style=" color:black; ">Referral Link</a>
+            <a href="<?php echo getBaseUrl();?>users/contactus.php"  class="btn mb-2 bg-light " style="color:black; ">Contact Us</a>
+            <a href="<?php echo getBaseUrl();?>users/logout.php"  class="btn bg-light" style=" color:black; height:40px;  ">Log Out</a>
           </div>
         </div>
       </div>

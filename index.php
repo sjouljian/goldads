@@ -77,23 +77,11 @@ if (isset($_POST['reg_btn']))
 
 
 <!-- body slider portion -->
-<div class="container-fluid  slider" id="slider" >
+<div class="container-fluid  slider home-slider" id="slider" >
   <div class="inner">
     <div class="container py-5 cn">
       <div class="row no-gutter justify-content-center ">
-          <div class="col-xl-4 my-3">
-          <form class="form-group d-block" action="" method="POST">
-                  <input type="text" class="form-control my-3 mb-4" placeholder="Full Name" name="full_name" required>
-                  <input type="text" class="form-control my-3 mb-4" placeholder="Username" name="user_name" required>
-                  <input type="email" class="form-control my-3 mb-4" placeholder="Email" name="user_email" required>
-                  <input type="tel" class="form-control my-3 mb-4" placeholder="Phone" name="user_phone" required>
-                  <input type="password" class="form-control my-3 mb-3" placeholder="Password"  name="user_password" minlength="8" required>
-                  <p style="color: white;"><input type="checkbox" name="accept" required/> I Accept <a href="" data-toggle="modal" data-target="#exampleModal">terms & conditions</a>.</p>
-                  
-                  <button type="submit"  name="reg_btn" class="form-control my-2 bg-selected text-light" style="background-color: #007c88; border-color: #007c88;">Register now</button>
-                </form>
-          </div>
-        <div class="col-xl-4 my-3">
+      <div class="col-xl-4 my-3">
            <form action="">
 
             <marquee direction="up" height="280" scrollamount="0" style="color: white;" class="tect-center" >
@@ -111,6 +99,18 @@ To get more information read the rules of the site or click on Contact Us if you
               </marquee>
            </form>
         </div>
+          <div class="col-xl-4 my-3">
+          <form class="form-group d-block" action="" method="POST">
+                  <input type="text" class="form-control my-3 mb-4" placeholder="Full Name" name="full_name" required>
+                  <input type="text" class="form-control my-3 mb-4" placeholder="Username" name="user_name" required>
+                  <input type="email" class="form-control my-3 mb-4" placeholder="Email" name="user_email" required>
+                  <input type="tel" class="form-control my-3 mb-4" placeholder="Phone" name="user_phone" required>
+                  <input type="password" class="form-control my-3 mb-3" placeholder="Password"  name="user_password" minlength="8" required>
+                  <p style="color: white;"><input type="checkbox" name="accept" required/> I Accept <a href="" data-toggle="modal" data-target="#exampleModal">terms & conditions</a>.</p>
+                  
+                  <button type="submit"  name="reg_btn" class="form-control btn btn-submit my-2 bg-selected text-light">Register now</button>
+                </form>
+          </div>
               
 <?php
 if(isset($msg) || isset($error)) echo '<div class="col-xl-4 my-2">';

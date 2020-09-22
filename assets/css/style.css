@@ -170,3 +170,20 @@ padding-right: 0px !important;
   .row-packages .values{
       color:#000000;
   }
+  .header-nav{
+    background-color: #a92069;
+    padding: 7px 0;
+  }
+  .home-slider{
+    background-image: url(../img/gold-home-slider-background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  #l-logo{
+        width: 100px;
+  }
+  @media (max-width: 767px){
+      #l-logo{
+          width: 70px;
+      }
+  }

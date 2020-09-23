@@ -11,35 +11,10 @@
    
 </head>
 <body>
-<!-- header logo section -->
-<div class="container-fluid" style="background-color: #007c88;">
-    <div class="container">
-        <div class="row">
-           <div class="col-6">
-               <img src="../logo.png" id="l-logo"  onclick="window.location.href='index.php#slider';" height="70px" width="70px"/>
-           </div>
-          
-       
 
-
-        </div>
-      
-    </div>
-
-</div>
-
-<!-- slider -->
-<div class="container-fluid how_slider" style="background-color: #007c88;">
-    <div class="how_slider2">
-    <div class="container ">
-        <div class="row">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs1-2">
-            <h1 class="text-center mt-5 mb-5 text-light">Your Referals</h1>
-          </div>
-        </div>
-    </div>
-</div>
-</div>
+<?php 
+      include_once 'inc/header.php';
+?>
 
 <!-- main -->
 

@@ -30,7 +30,7 @@
             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs1-12" style="color:#007c88;"></div>
             <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs1-12" style="color:#2e3b42">
            <h4 class="mt-5 text-dark">1-What is <span >Gold</span> <span >Ads</span> Pack?</h4>
-           <p ><span>Gold</span> <span>Ads</span><span>Pack</span> Is a Paid to Click Advertising site where you can show your preferred Affiliate websites to other members of<br> <span style="color: goldenrod;">Gold</span> <span style="color: red;">Ads</span><span style="color:black;">Pack</span> while earning up to 130% .</p>
+           <p ><span>Gold</span> <span>Ads</span><span>Pack</span> Is a Paid to Click Advertising site where you can show your preferred Affiliate websites to other members of<br> <spa>Gold</span> <span>Ads</span><span>Pack</span> while earning up to 130% .</p>
            <h4  class="mt-5 text-black">2-How long does Gold Ads Pack run for?</h4>
            <p>Each AdPack runs for 30 Days. After this period it will expire. Every purchase is handled separately.</p>
            <h4  class="mt-5 text-black">3-How many visit per AdPack will I get?</h4>

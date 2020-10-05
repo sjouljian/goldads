@@ -1,9 +1,54 @@
 <?php 
-//include ('../connect/db.php');                    
+
+$section_locked = true;
+set_include_path(get_include_path().":".$_SERVER["DOCUMENT_ROOT"]."/goldads");
+include_once '../connect/db.php';
+if(session_status() == PHP_SESSION_NONE ){
+    session_start();
+}
+
+
+$useremail= $_SESSION['user'];
+$user_id=$_SESSION['user_id'];
+$chkpackage = ("SELECT * FROM package WHERE start_date < NOW() AND end_date > NOW() AND user_id='$user_id' ORDER BY start_date DESC");
+
+$user_packages = mysqli_query($db,$chkpackage);
+if (mysqli_num_rows($user_packages) > 0) 
+{
+  $row = mysqli_fetch_assoc($user_packages);
+  $row_id = $row['package_list_id'];
+  $package = mysqli_query($db,("SELECT * FROM package_list WHERE id='$row_id'"));
+  $package_rows = mysqli_fetch_assoc($package);
+
+  $user_ads = mysqli_query($db,("SELECT * FROM ads WHERE user_id='$user_id'"));
+
+  if(mysqli_num_rows($user_ads) >= $package_rows['sites']){
+    $section_locked = true;
+  }
+
+}
+else{
+  $section_locked = true;
+}
+
 if(isset($_POST['add']))
 {                     
   $name = $_POST['name'];
   $link = $_POST['link'];
+
+  $crdate=new DateTime();
+  $crdate=$crdate->format('Y-m-d H:i:s');
+  $useremail= $_SESSION['user'];
+  $chkpackage = ("SELECT * FROM package WHERE start_date<'$crdate' AND end_date>'$crdate' AND email='$useremail' ORDER BY start_date DESC");
+
+  $rchkpckg = mysqli_query($db,$chkpackage);
+  if (mysqli_num_rows($rchkpckg)>0) 
+  {
+      $result = mysqli_fetch_assoc($rchkpckg);
+  }
+
+
+
 
   $sql="INSERT INTO ads(name,link) VALUES('$name','$link')";
   
@@ -23,10 +68,7 @@ if(isset($_POST['add']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
     <title >Gold Ad Pack</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    
-    <script src="https://kit.fontawesome.com/19d077c931.js" crossorigin="anonymous"></script>
+    <?php include('inc/head.php')?>
    <style>
        .content {
   padding: 0 18px;
@@ -74,6 +116,7 @@ if (isset($error))
 }
 ?>
                 <div class="card shadow mb-4">
+                <?php if(!$section_locked){?>
                 <centre><h1>Add Site</h1></centre>
                 <hr>
                 <div class="row">
@@ -90,6 +133,9 @@ if (isset($error))
                     </div>
                     <div class="col-sm-2"></div>  
                 </div>
+                <?php }else{?>
+                <centre><h1>You don't have any active package</h1></centre>
+                <?php } ?>
                 </div>
             </div>
         </div>

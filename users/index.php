@@ -1,10 +1,16 @@
 <?php
 set_include_path(get_include_path().":".$_SERVER["DOCUMENT_ROOT"]."/goldads");
-
+session_start();
 include_once '../connect/db.php';
 if (!isset($_SESSION['user'])) 
 {
   header("location: ../login.php");
+}
+else{
+  $useremail= $_SESSION['user'];
+  $user_id= $_SESSION['user_id'];
+  $allpackages = mysqli_query($db, "SELECT * FROM package_list WHERE published = 1");
+  $user_packages = mysqli_query($db, "SELECT * FROM package WHERE start_date < NOW() AND end_date > NOW() AND user_id='$user_id'");
 }
 
 ?>
@@ -14,8 +20,6 @@ if (!isset($_SESSION['user']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
     <title >Gold Ads Pack</title>
-    <!-- <base href="/goldads/" /> -->
-    <base href="/goldads/" />
     <?php include('inc/head.php')?>
    
 </head>
@@ -48,71 +52,29 @@ if (!isset($_SESSION['user']))
 
     <div class="col-md-9 col-xl-9 col-lg-9">
     <div class="row mb-4 equal-heights row-packages">
-        <div class="col-xl-3 col-lg-5">
+    <?php   
+    
+      while($row = mysqli_fetch_assoc($allpackages)){?>
+        <div class="col-xl-3">
             <div class="card shadow mb-4" style="background-color:#fff;">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header package-head py-3 d-flex flex-row align-items-center">
-                    <h6 class="m-auto font-weight-bold" style="color: #fff;">Package 1</h6>
+                    <h6 class="m-auto font-weight-bold" style="color: #fff;"><?php echo $row['title']; ?></h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body ">
-                    <p class="mb-5 text-center desc">The first package that will user buy is:</p>
-                    <h5 class="mb-5 text-center values">10$ = 120%</h5>
-                    <button class="btn card-btn form control" style="color:white;"  onclick="window.location.href='pay/index.php?pay=10&pre=n';">Purchase</button>
+                <div class="card-body">
+                    <p class="mb-5 text-center desc"><?php echo $row['small_description']; ?></p>
+                    <h5 class="mb-5 text-center values"><?php echo $row['price']; ?>$ = <?php echo $row['percentage']; ?>% <?php if($row['id'] == 4) echo 'extra'?></h5>
+                    <?php if($row['id']!=4 || ($row['id']==4 && mysqli_num_rows($user_packages) > 0)){?>
+                    <button class="btn card-btn form control" style="color:white;"  onclick="window.location.href='pay/index.php?pay=<?php echo $row['id']; ?>&pre=n';">Purchase</button>
+                    <?php }else{?>
+                      <p>Please purchase a package to unlock premium package</p>
+                    <?php } ?>
                 </div>
             </div>
               
         </div>
-                <!-- second package      -->
-        <div class="col-xl-3 col-lg-5">
-            <div class="card shadow mb-4" style="background-color:#fff;">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header package-head py-3 d-flex flex-row align-items-center">
-                  <h6 class="m-auto font-weight-bold" style="color: #fff;">Package 2</h6>
-                 </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <p class="mb-5 text-center desc">The second package that will user buy is:</p>
-                    <h5 class="mb-5 text-center values">20$ = 130%</h5>
-                    <button class="btn card-btn form control" style="color:white;"  onclick="window.location.href='pay/index.php?pay=20&pre=n';">Purchase</button>
-                    
-                </div>
-            </div>
-        </div>
-                 <!-- third package -->
-                    <div class="col-xl-3">
-                        <div class="card shadow mb-4" style="background-color:#fff;">
-                               <!-- Card Header - Dropdown -->
-                            <div class="card-header package-head py-3 d-flex flex-row align-items-center">
-                                <h6 class="m-auto font-weight-bold" style="color: #fff;">Package 3</h6>
-                            </div>
-                               <!-- Card Body -->
-                            <div class="card-body">
-                                <p class="mb-5 text-center desc">The third package that will user buy is:</p>
-                                <h5 class="mb-5 text-center values">30$ = 140%</h5>
-                               
-                                    
-                                <button class="btn card-btn form control" style="color:white;"  onclick="window.location.href='pay/index.php?pay=30&pre=n';">Purchase</button>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <!--fourth package-->
-                          <!-- second package      -->
-        <div class="col-xl-3 col-lg-5">
-            <div class="card shadow mb-4" style="background-color:#fff;">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header package-head py-3 d-flex flex-row align-items-center">
-                  <h6 class="m-auto font-weight-bold" style="color: #fff;">Premium</h6>
-                 </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <p class="mb-5 text-center desc">The premium package that will user buy is:</p>
-                    <h5 class="mb-5 text-center values">20$= 10% extra</h5>
-                    <button class="btn card-btn form control" style="color:white;"  onclick="window.location.href='pay/index.php?pay=20&pre=y';">Purchase</button>
-                </div>
-            </div>
-        </div>
+      <?php }?>
     </div>
     <div class="row">
         <div class="col-md-12">

@@ -1,6 +1,5 @@
 <?php
-//include('../connect/db.php');
-
+set_include_path(get_include_path().":".$_SERVER["DOCUMENT_ROOT"]."/goldads");
 ?>
 <html lang="en">
 <head><meta charset="windows-1252">
@@ -8,10 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
     <title >Gold Ads Pack</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    
-    <script src="https://kit.fontawesome.com/19d077c931.js" crossorigin="anonymous"></script>
+    <?php include('inc/head.php')?>
+
    <style>
        .content {
   padding: 0 18px;
@@ -43,6 +40,7 @@
 $crdate=date("d.m.Y");
 $useremail= $_SESSION['user'];
 $chkpackage = ("SELECT * FROM package WHERE start_date<'$crdate' AND end_date>'$crdate' AND email='$useremail'");
+
 $rchkpckg = mysqli_query($db,$chkpackage);
 if (mysqli_num_rows($rchkpckg)>0) 
 {

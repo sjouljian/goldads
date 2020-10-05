@@ -3,10 +3,15 @@
         <!-- Card Header - Dropdown -->
           <div style="background-color:#a92069;text-align:center" class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 <?php
-set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
+set_include_path(get_include_path().":".$_SERVER["DOCUMENT_ROOT"]."/goldads");
 include_once 'connect/db.php';
-$email=$_SESSION['user'];
-$sum = mysqli_query($db,"SELECT * FROM earnings WHERE email='$email'");
+
+if(session_status() == PHP_SESSION_NONE ){
+  session_start();
+}
+$email = $_SESSION['user'];
+$user_id = $_SESSION['user_id'];
+$sum = mysqli_query($db,"SELECT * FROM earnings WHERE user_id='$user_id'");
 $sumearn=0;
 while($row=mysqli_fetch_array($sum))
 {

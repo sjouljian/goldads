@@ -54,7 +54,8 @@ if (!isset($_SESSION['user']))
         <?php 
             include('inc/sidebar.php'); 
             $email=$_SESSION['user'];
-            $sql = "UPDATE package SET status='activated' WHERE email='$email'";
+            $user_id=$_SESSION['user_id'];
+            $sql = "UPDATE package SET status='activated' WHERE user_id=$user_id";
             $query=mysqli_query($db,$sql);
         ?>
 

@@ -44,6 +44,7 @@
       <!-- Pie Chart -->
         <?php include('../inc/sidebar.php'); 
         $email=$_SESSION['user'];
+        $user_id=$_SESSION['user_id'];
         if(isset($_GET['pay']))
         {
             $cr=date("d.m.Y");
@@ -51,6 +52,7 @@
             $end=date("d.m.Y", strtotime("+1 month", $dt));
             $pay=$_GET['pay'];
             $pre=$_GET['pre'];
+            $package_id = $_GET['package_id'];
             if($pay==10 && $pre='n')
             {
                 $packg='package1';
@@ -67,7 +69,8 @@
             {
                 $packg='premium';
             }
-            $sql="INSERT INTO package(email,package_name,start_date,end_date,status) VALUES('$email','$packg','$cr','$end','pending')";
+
+            $sql="INSERT INTO package(user_id,package_list_id,package_name,start_date,end_date,status) VALUES('$user_id','$package_id','$packg','$cr','$end','pending')";
 
             $query=mysqli_query($db,$sql);
         }

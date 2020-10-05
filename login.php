@@ -49,11 +49,13 @@ if (isset($_POST['login_btn']))
        }
        else
        {
-            $chkdate = mysqli_query($db,"SELECT * FROM earnings WHERE email='$email' AND date='$crdate'"); 
+            $result = mysqli_fetch_assoc($query);
+            $user_id=$result['user_id'];
+            $chkdate = mysqli_query($db,"SELECT * FROM earnings WHERE user_id='$user_id' AND date='$crdate'"); 
             $daterows = mysqli_num_rows($chkdate);
             if($daterows<1)
             {
-                $chkpckg = mysqli_query($db,"SELECT * FROM package WHERE email='$email' AND end_date>'$crdate' AND status='activated'"); 
+                $chkpckg = mysqli_query($db,"SELECT * FROM package WHERE user_id='$user_id' AND end_date>'$crdate' AND status='activated'"); 
                 $pckgrows = mysqli_num_rows($chkpckg);
                 if($pckgrows>0)
                 {
@@ -93,12 +95,13 @@ if (isset($_POST['login_btn']))
                             $price="1.4";
                         }
                     }
-                    $q =mysqli_query($db,"INSERT INTO earnings(`email`,`date`,`price`) VALUES('$email','$crdate','$price')");
+                    $q =mysqli_query($db,"INSERT INTO earnings(`user_id`,`date`,`price`) VALUES('$user_id','$crdate','$price')");
                 }
             }
            
-            
+            session_start();
             $_SESSION['user']=$email;
+            $_SESSION['user_id']=$user_id;
             header("location: users/index.php");
         }
     }

@@ -1,115 +1,134 @@
-#l-logo{
-    margin-left:10px;
+#l-logo {
+    margin-left: 10px;
     cursor: pointer;
 }
-#r-logo{
+
+#r-logo {
     height: 80px;
     width: 450px;
     float: right;
 }
-.inner{
-     height: auto;
+
+.inner {
+    height: auto;
     width: 100%;
 
 }
 
-.inner{
+.inner {
     background-image: url(assets/img/back.jpg);
-   background-repeat: no-repeat;
-	
+    background-repeat: no-repeat;
+
     background-size: cover;
     height: auto;
     width: auto;
-   
+
 }
-#slider{
-    background-color:rgba(0,0,0,0.76);
+
+#slider {
+    background-color: rgba(0, 0, 0, 0.76);
 }
-.l{
+
+.l {
     height: 50px;
     width: 50px;
 }
-.st{
+
+.st {
     height: 100px;
     width: 100px;
-   /* background-color: black; */
-   border-radius: 50px;
-   border: 5px solid white;
-   border-style: double;
-   border-left-style: hidden;
-   margin: auto;
+    /* background-color: black; */
+    border-radius: 50px;
+    border: 5px solid white;
+    border-style: double;
+    border-left-style: hidden;
+    margin: auto;
 }
 
 
-@keyframes bounce{
-    0%{transform: translateY(0);}
-    100%{transform: translateY(-50px);}
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-50px);
+    }
 }
-.s{
+
+.s {
     animation: bounce 0.7s;
     animation-direction: alternate;
     animation-iteration-count: infinite;
-    
-    
+
+
 }
-.im{
+
+.im {
     background-image: url(https://cdn.hipwallpaper.com/i/72/59/5LpN7l.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: auto;
     width: auto;
 }
-.im2{
-    background-color:rgba(0,0,0,0.65);
+
+.im2 {
+    background-color: rgba(0, 0, 0, 0.65);
     height: auto;
     width: auto;
 
 }
+
 /* page two */
-.how_slider{
+.how_slider {
     background-image: url(https://png.pngtree.com/thumb_back/fh260/back_pic/03/99/64/8557fa0d3d5c357.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-height: auto;
-width: auto;
-padding-left:0!important;
-padding-right:0!important;
+    height: auto;
+    width: auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
-.how_slider2{
-    background-color:rgba(0,0,0,0.65);
+
+.how_slider2 {
+    background-color: rgba(0, 0, 0, 0.65);
     height: auto;
     width: auto;
 }
-.btn2{
+
+.btn2 {
     height: 50px;
     width: 200px;
     margin: auto;
     border-radius: 50px;
     margin-top: 5px;
 }
-.reg > a{
-padding-top: 7px;
-padding-left: 15px;
+
+.reg>a {
+    padding-top: 7px;
+    padding-left: 15px;
 }
 
 /* page 3 */
 
-.faq_slider{
+.faq_slider {
     background-image: url('../img/gold-ads-slider.jpg');
-    
+
     background-size: cover;
     background-repeat: no-repeat;
-height: auto;
-width: auto;
-padding-left: 0px !important;
-padding-right: 0px !important;
+    height: auto;
+    width: auto;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
-.faq_slider2{
-    background-color:rgba(0,0,0,0.65);
+
+.faq_slider2 {
+    background-color: rgba(0, 0, 0, 0.65);
     height: auto;
     width: auto;
 }
-.user{
+
+.user {
     border-radius: 20px;
     border: 2px solid red;
 }
@@ -121,9 +140,9 @@ padding-right: 0px !important;
     padding: 20px;
     background-color: #f44336;
     color: white;
-  }
-  
-  .closebtn {
+}
+
+.closebtn {
     margin-left: 15px;
     color: white;
     font-weight: bold;
@@ -132,61 +151,117 @@ padding-right: 0px !important;
     line-height: 20px;
     cursor: pointer;
     transition: 0.3s;
-  }
-  
-  .closebtn:hover {
+}
+
+.closebtn:hover {
     color: black;
-  }
-  .btn.btn-submit{
-      background-color:#a91c68;
-      color:white;
-  }
-  .btn.btn-submit:hover{
-    background-color:#daa628;
-  }
-  .equal-heights .card{
+}
+
+.btn.btn-submit {
+    background-color: #a91c68;
+    color: white;
+}
+
+.btn.btn-submit:hover {
+    background-color: #daa628;
+}
+
+.equal-heights .card {
     height: 100%;
-  }
-  .btn.card-btn{
-      position: absolute;
-      bottom: 20px;
-      left: 0px;
-      right: 0px;
-      margin: auto;
-      background-color: #a91c68;
-  }
-  .card-btn:hover{
-      background-color:#daa628
-  }
-  .left-sidebar .btn{
-      width:100%;
-  }
-  .row-packages .package-head{
-      background-color:#a92069;
-  }
-  .row-packages .desc{
-      color:#2e3b42;
-  }
-  .row-packages .values{
-      color:#000000;
-  }
-  .header-nav{
+}
+
+.btn.card-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    background-color: #a91c68;
+}
+
+.card-btn:hover {
+    background-color: #daa628
+}
+
+.left-sidebar .btn {
+    width: 100%;
+}
+
+.row-packages .package-head {
+    background-color: #a92069;
+}
+
+.row-packages .desc {
+    color: #2e3b42;
+}
+
+.row-packages .values {
+    color: #000000;
+}
+
+.header-nav {
     background-color: #a92069;
     padding: 7px 0;
-  }
-  .home-slider{
+}
+
+.home-slider {
     background-image: url(../img/gold-home-slider-background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-  }
-  .text-black{
-      color:#000000;
-  }
-  #l-logo{
-        width: 100px;
-  }
-  @media (max-width: 767px){
-      #l-logo{
-          width: 70px;
-      }
-  }
+}
+
+.text-black {
+    color: #000000;
+}
+
+#l-logo {
+    width: 100px;
+}
+
+.container.countdown-template{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    padding-top: 150px;
+    margin-bottom: 150px;
+}
+.home-counter {
+    width: 33.33%;
+    text-align: center;
+    display: inline-table;
+    align-self: center;
+    min-width: 300px;
+}
+
+.home-form {
+    width: 33.33%;
+    text-align: center;
+    display: inline-table;
+    align-self: center;
+    min-width: 300px;
+}
+
+@media (max-width: 767px) {
+    body, .container.countdown-template{
+        height: auto!important;
+        flex-direction: column;
+    }
+    #l-logo {
+        width: 70px;
+    }
+    .home-counter {
+        width: 100%;
+        position: relative;
+        margin-top: 50px;
+    }
+    
+    .home-form {
+        margin-top: 50px;
+        width: 100%;
+        position: relative;
+    }
+
+    .home-form h1{
+        text-align: center!important;
+    }
+}

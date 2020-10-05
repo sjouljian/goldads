@@ -81,26 +81,19 @@ if (isset($_POST['reg_btn']))
   <div class="inner">
     <div class="container py-5 cn">
       <div class="row no-gutter justify-content-center ">
-      <div class="col-xl-4 my-3">
+      <div class="col-xl-5 my-3">
            <form action="">
 
             <marquee direction="up" height="280" scrollamount="0" style="color: white;" class="tect-center" >
-                <h2>  PURCHASE GOLD ADS PACK!</h2>
-
-                      The Gold Ads Pack offers you to earn money on viewing ad units and attracting referrals.
-Watch commercial advertising, and we will credit up to 150% a month to your account.
-Attract referrals and get 10% from their deposits transferred to your account.
-It seems to be the most profitable offer on the market of paid advertising at the time!
-Your earnings is depend on how much you invest by buying the AdPacks.
-Just by viewing 10 ADS a day you will earn your % earning based on which adpack you have bought,
-All earned funds are saved in your personal account.
-withdraw are possible at any given time and get it within 3 working days for safety reasons
-To get more information read the rules of the site or click on Contact Us if you have specific questions.
+                <h2>GOLD ADS PACK!</h2>
+                Gold Ads Pack offers you to earn money on viewing ad units and attracting referrals. Watch commercial advertising, and we will credit up to 150% a month to your account. Attract referrals and get 10% from their deposits transferred to your account. It seems to be the most profitable offer on the market of paid advertising at the time! Just by viewing 10 ADS a day you will earn your % earning based on which ad pack you have bought. Withdrawals are possible at any given time and take up to 3 working days for safety reasons. For more information check out our F.A.Q. and Rules or Contact us if you have specific questions.
               </marquee>
            </form>
         </div>
-          <div class="col-xl-4 my-3">
-          <form class="form-group d-block" action="" method="POST">
+        <div class="col-xl-2">
+        </div>
+          <div class="col-xl-5 my-3">
+                <form class="form-group d-block" action="" method="POST">
                   <input type="text" class="form-control my-3 mb-4" placeholder="Full Name" name="full_name" required>
                   <input type="text" class="form-control my-3 mb-4" placeholder="Username" name="user_name" required>
                   <input type="email" class="form-control my-3 mb-4" placeholder="Email" name="user_email" required>

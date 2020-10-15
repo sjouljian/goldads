@@ -1,4 +1,5 @@
 <?php
+set_include_path(get_include_path().":".$_SERVER["DOCUMENT_ROOT"]."/goldads");
 include('../connect/db.php');
 if (isset($_POST['submit'])) 
 {
@@ -22,10 +23,7 @@ if (isset($_POST['submit']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
     <title >Gold Ads Pack</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    
-    <script src="https://kit.fontawesome.com/19d077c931.js" crossorigin="anonymous"></script>
+    <?php include('inc/head.php')?>
    
 </head>
 <body>
@@ -66,7 +64,7 @@ if (isset($error))
               <div class="card shadow">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center">
-                  <h6 class="m-0 font-weight-bold" style="color: #007c88;">Message Us</h6>
+                  <h6 class="m-0 font-weight-bold" style="color: #a91c68;">Message Us</h6>
                  </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -90,7 +88,7 @@ if (isset($error))
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" name="submit" class="btn btn-default form-control" style="background-color:#007c88; color:white;" >Submit</button>
+                        <button type="submit" name="submit" class="btn btn-submit btn-default form-control" >Submit</button>
                         </div>
                     </div>
                     </form>

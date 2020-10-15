@@ -134,7 +134,7 @@ if (isset($error))
                     <div class="col-sm-2"></div>  
                 </div>
                 <?php }else{?>
-                <centre><h1>You don't have any active package</h1></centre>
+                <centre><h1>You don't have any active package or you have reached maximum ads.</h1></centre>
                 <?php } ?>
                 </div>
             </div>

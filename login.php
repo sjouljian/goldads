@@ -186,7 +186,7 @@ if (isset($error))
                   </div>
                   
                   <div class="form-group">
-                    <button type="submit" name="login_btn" class="btn btn-lg btn-block" tabindex="4" style="background-color: #007c88; color: white;">
+                    <button type="submit" name="login_btn" class="btn btn-submit btn-lg btn-block" tabindex="4">
                       Login
                     </button>
                   </div>

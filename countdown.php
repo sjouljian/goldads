@@ -64,6 +64,7 @@ if (isset($_POST['reg_btn']))
     <title >Gold Ads Pack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <base href="/goldads/" />
+    <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css">
     <link rel="stylesheet" href="assets/css/style.css?v=3534">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -82,12 +83,12 @@ if (isset($_POST['reg_btn']))
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-white">LAUNCHING SOON</h2>
+                    <h3 class="text-white">LAUNCHING SOON</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="text-white" id="clock"></h3>
+                    <h4 class="text-white" id="clock"></h4>
                 </div>
             </div>
             <br>
@@ -97,11 +98,26 @@ if (isset($_POST['reg_btn']))
             <br>
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-white">STAY TUNED!</h2>
+                    <h3 class="text-white">STAY TUNED!</h3>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-white"><b>EARN UP TO 100$ A DAY WITHIN FEW MINUTES BY VIEWING 10 ADS A DAY</b></h2>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-white">SCROLL DOWN & REGISTER</h5>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <h4 class="text-white"><a class="link" href="#registration"><i class="icofont-circled-down"></i></a></h4>
                 </div>
             </div>
         </div>
-        <div class="home-form">
+        <div id="registration" class="home-form">
         <?php
 if(isset($msg) || isset($error)) echo '<div class="col-xl-12 my-2 px-0">';
 if (isset($msg)) 
@@ -151,7 +167,7 @@ if (isset($error))
 
         var $clock = $('#clock');
 
-        $clock.countdown(new Date("2020-10-16T15:00:00.000+00:00"), function(event) {
+        $clock.countdown(new Date("2020-11-01T15:00:00.000+00:00"), function(event) {
             $(this).html(event.strftime('%D DAYS %H HOURS %M MINUTES LEFT'));
         });
     </script>

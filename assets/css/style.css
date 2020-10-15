@@ -81,7 +81,7 @@
 
 /* page two */
 .how_slider {
-    background-image: url(https://png.pngtree.com/thumb_back/fh260/back_pic/03/99/64/8557fa0d3d5c357.jpg);
+    background-image: url(../img/gold-ads-slider.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: auto;
@@ -220,27 +220,35 @@
 
 .container.countdown-template{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    height: 100%;
-    padding-top: 150px;
+    padding-top: 10%;
     margin-bottom: 150px;
 }
 .home-counter {
-    width: 33.33%;
+    width: 100%;
     text-align: center;
-    display: inline-table;
+    display: flex;
+    flex-direction: column;
     align-self: center;
     min-width: 300px;
 }
 
 .home-form {
-    width: 33.33%;
+    width: 50%;
     text-align: center;
-    display: inline-table;
+    display: flex;
+    flex-direction: column;
     align-self: center;
     min-width: 300px;
 }
-
+.link{
+    color: inherit;
+}
+.link:hover{
+    text-decoration: none;
+    color: inherit;
+}
 @media (max-width: 767px) {
     body, .container.countdown-template{
         height: auto!important;

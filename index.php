@@ -84,7 +84,7 @@ if (isset($_POST['reg_btn']))
       <div class="col-xl-5 my-3">
            <form action="">
 
-            <marquee direction="up" height="280" scrollamount="0" style="color: white;" class="tect-center" >
+            <marquee direction="up" scrollamount="0" style="color: white;" class="tect-center" >
                 <h2>GOLD ADS PACK!</h2>
                 Gold Ads Pack offers you to earn money on viewing ad units and attracting referrals. Watch commercial advertising, and we will credit up to 150% a month to your account. Attract referrals and get 10% from their deposits transferred to your account. It seems to be the most profitable offer on the market of paid advertising at the time! Just by viewing 10 ADS a day you will earn your % earning based on which ad pack you have bought. Withdrawals are possible at any given time and take up to 3 working days for safety reasons. For more information check out our F.A.Q. and Rules or Contact us if you have specific questions.
               </marquee>
@@ -97,9 +97,8 @@ if (isset($_POST['reg_btn']))
                   <input type="text" class="form-control my-3 mb-4" placeholder="Full Name" name="full_name" required>
                   <input type="text" class="form-control my-3 mb-4" placeholder="Username" name="user_name" required>
                   <input type="email" class="form-control my-3 mb-4" placeholder="Email" name="user_email" required>
-                  <input type="tel" class="form-control my-3 mb-4" placeholder="Phone" name="user_phone" required>
                   <input type="password" class="form-control my-3 mb-3" placeholder="Password"  name="user_password" minlength="8" required>
-                  <p style="color: white;"><input type="checkbox" name="accept" required/> I Accept <a href="" data-toggle="modal" data-target="#exampleModal">terms & conditions</a>.</p>
+                  <p style="color: white;"><input type="checkbox" name="accept" required/> I Accept <a href="rules.php" target="_blank">terms & conditions</a>.</p>
                   
                   <button type="submit"  name="reg_btn" class="form-control btn btn-submit my-2 bg-selected text-light">Register now</button>
                 </form>

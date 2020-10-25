@@ -2,11 +2,14 @@
 set_include_path(get_include_path().":".$_SERVER["DOCUMENT_ROOT"]."/goldads");
 session_start();
 include_once '../connect/db.php';
+include_once 'inc/functions.php';
 if (!isset($_SESSION['user'])) 
 {
   header("location: ../login.php");
 }
 else{
+  $activePackageExists = activePackageExists();
+  $premiumPackageExists = premiumPackageExists();
   $useremail= $_SESSION['user'];
   $user_id= $_SESSION['user_id'];
   $allpackages = mysqli_query($db, "SELECT * FROM package_list WHERE published = 1");
@@ -65,9 +68,10 @@ else{
                 <div class="card-body">
                     <p class="mb-5 text-center desc"><?php echo $row['small_description']; ?></p>
                     <h5 class="mb-5 text-center values"><?php echo $row['price']; ?>$ = <?php echo $row['percentage']; ?>% <?php if($row['id'] == 4) echo 'extra'?></h5>
-                    <?php if($row['id']!=4 || ($row['id']==4 && mysqli_num_rows($user_packages) > 0)){?>
-                    <button class="btn card-btn form control" style="color:white;"  onclick="window.location.href='pay/index.php?pay=<?php echo $row['id']; ?>&pre=n';">Purchase</button>
-                    <?php }else{?>
+                    <?php if($row['id']!=4 || ($row['id']==4 && mysqli_num_rows($user_packages) > 0)){
+                      if((!$activePackageExists && $row['id'] != PREMIUM_PACKAGE_ID) || ($activePackageExists && !$premiumPackageExists && $row['id'] == PREMIUM_PACKAGE_ID)){?>
+                    <button class="btn card-btn form control" style="color:white;"  onclick="window.location.href='users/pay/index.php?pay=<?php echo $row['id']; ?>&pre=n';">Purchase</button>
+                    <?php }}else{?>
                       <p>Please purchase a package to unlock premium package</p>
                     <?php } ?>
                 </div>

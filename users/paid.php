@@ -1,5 +1,10 @@
 <?php
 set_include_path(get_include_path().":".$_SERVER["DOCUMENT_ROOT"]."/goldads");
+include_once 'inc/functions.php';
+$activePackageExists = activePackageExists();
+if(!$activePackageExists){
+  header("location: users");
+}
 ?>
 <html lang="en">
 <head><meta charset="windows-1252">
@@ -41,32 +46,32 @@ $crdate=date("d.m.Y");
 $useremail= $_SESSION['user'];
 $chkpackage = ("SELECT * FROM package WHERE start_date<'$crdate' AND end_date>'$crdate' AND email='$useremail'");
 
-$rchkpckg = mysqli_query($db,$chkpackage);
-if (mysqli_num_rows($rchkpckg)>0) 
+//$rchkpckg = mysqli_query($db,$chkpackage);
+if ($activePackageExists) 
 {
   $chkviewads=("SELECT * FROM viewads WHERE date='$crdate'");
   $rchkviewads = mysqli_query($db,$chkviewads);
   if (mysqli_num_rows($rchkviewads)<1) 
   {
-    $ads = ("SELECT * FROM ads");
-    $adsresult = mysqli_query($db,$ads);
-    while ($row=mysqli_fetch_array($adsresult)) 
-    {
-      $link=$row['link'];
-      $q =mysqli_query($db,"INSERT INTO viewads(`date`,`link`) VALUES('$crdate','$link')");
-    }
+    // $ads = ("SELECT * FROM ads");
+    // $adsresult = mysqli_query($db,$ads);
+    // while ($row=mysqli_fetch_array($adsresult)) 
+    // {
+    //   $link=$row['link'];
+    //   $q =mysqli_query($db,"INSERT INTO viewads(`date`,`link`) VALUES('$crdate','$link')");
+    // }
   }
 }
 
-
-$query = ("SELECT * FROM ads");
+$user_id=$_SESSION['user_id'];
+$query = ("SELECT * FROM ads AS t1 JOIN (SELECT id FROM ads WHERE NOT(`user_id` <=> $user_id) ORDER BY RAND() LIMIT 10) as t2 ON t1.id=t2.id");
 $result = mysqli_query($db,$query);
 $count=1;
 while ($row=mysqli_fetch_array($result)) 
 {
 
 ?>
-          <button style="color:#007c88;" onclick="window.location.href='add.php?link=<?php echo $row['link'] ?>';" formtarget="_blank"><b>ad<?php echo $count; ?>: click to Earn Cash</b></button>
+          <button style="color:#007c88;" onclick="window.location.href='users/follow.php?link=<?php echo $row['id'] ?>';" formtarget="_blank"><b>ad - <?php echo $row['name']; ?>: click to Earn Cash</b></button>
 <?php
 $count++;
 }

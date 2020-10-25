@@ -9,6 +9,8 @@ include_once 'connect/db.php';
 if(session_status() == PHP_SESSION_NONE ){
   session_start();
 }
+include_once 'inc/functions.php';
+
 $email = $_SESSION['user'];
 $user_id = $_SESSION['user_id'];
 $sum = mysqli_query($db,"SELECT * FROM earnings WHERE user_id='$user_id'");
@@ -47,8 +49,10 @@ function getBaseUrl()
           <div class="card-body left-sidebar">
 
             <a href="<?php echo getBaseUrl();?>users/index.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; ">Dashboard</a>
-            <a href="<?php echo getBaseUrl();?>users/uploadad.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; ">Add Site</a>
-            <a href="<?php echo getBaseUrl();?>users/paid.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; "> Ads</a>
+            <a href="<?php echo getBaseUrl();?>users/uploadad.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; ">My ads</a>
+            <?php if(activePackageExists()){?>
+                <a href="<?php echo getBaseUrl();?>users/paid.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; "> Ads</a>
+            <?php } ?>
             <a href="<?php echo getBaseUrl();?>users/withdraw.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; ">Withdraw</a>
             <a href="<?php echo getBaseUrl();?>users/refrals.php"  class="btn mb-2 bg-light " style=" color:black; ">Referral Link</a>
             <a href="<?php echo getBaseUrl();?>users/contactus.php"  class="btn mb-2 bg-light " style="color:black; ">Contact Us</a>

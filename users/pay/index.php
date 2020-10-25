@@ -52,7 +52,7 @@
             $end=date("d.m.Y", strtotime("+1 month", $dt));
             $pay=$_GET['pay'];
             $pre=$_GET['pre'];
-            $package_id = $_GET['package_id'];
+            $package_id = $_GET['pay'];
             if($pay==10 && $pre='n')
             {
                 $packg='package1';

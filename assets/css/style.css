@@ -249,6 +249,9 @@
     text-decoration: none;
     color: inherit;
 }
+a.btn{
+    width: fit-content;
+}
 @media (max-width: 767px) {
     body, .container.countdown-template{
         height: auto!important;

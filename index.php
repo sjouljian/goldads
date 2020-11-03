@@ -1,159 +1,157 @@
 <?php
 
 include_once 'connect/db.php';
-if (isset($_GET['email'])) 
-{
-    $ref=$_GET['email'];
-    $checkref = mysqli_query($db,"SELECT * FROM user_registration WHERE user_email='$ref'");
+if (isset($_GET['ref'])) {
+    $ref = $_GET['ref'];
+    $checkref = mysqli_query($db, "SELECT * FROM user_registration WHERE user_email='$ref'");
     $refrows = mysqli_num_rows($checkref);
-    if($refrows>0)
-    {
-       $reflink=$ref;
-    }
-    else
-    {
-        $reflink="no ref";
+    if ($refrows > 0) {
+        $reflink = $ref;
+        $ref_user = mysqli_fetch_assoc($checkref);
+        $ref_userid = $ref_user['user_id'];
+    } else {
+        $reflink = "no ref";
+        $ref_userid = NULL;
     }
 }
-if (isset($_POST['reg_btn'])) 
-{
-    if( isset($_POST['accept']) )
-    {
-        $fullname=$_POST['full_name'];
-        $username=$_POST['user_name'];
-        $usermail=$_POST['user_email'];
-        $userphone=$_POST['user_phone'];
+else{
+    $ref_userid = NULL;
+}
+if (isset($_POST['reg_btn'])) {
+    if (isset($_POST['accept'])) {
+        $fullname = $_POST['full_name'];
+        $username = $_POST['user_name'];
+        $usermail = $_POST['user_email'];
+        $userphone = isset($_POST['user_phone']) ? $_POST['user_phone'] : "";
 
-        $userpassword=md5($_POST['user_password']);
+        $userpassword = md5($_POST['user_password']);
 
 
-        $query = mysqli_query($db,"SELECT * FROM user_registration WHERE user_email='$usermail'"); 
+        $query = mysqli_query($db, "SELECT * FROM user_registration WHERE user_email='$usermail'");
+        $query2 = mysqli_query($db, "SELECT * FROM user_registration WHERE user_name='$username'");
         $numrows = mysqli_num_rows($query);
-        if($numrows<1)
-        {
-    
-            $q =mysqli_query($db,"INSERT INTO user_registration(`full_name`,`user_name`,`user_email`,`user_phone`, `user_password`,`refral`) VALUES('$fullname','$username','$usermail','$userphone','$userpassword','$reflink')");
-            if ($q) 
-            {
-                $_SESSION['user']=$usermail;
-                header("location: users/index.php");
+        $numrows_username = mysqli_num_rows($query2);
+
+        if ($numrows < 1) {
+            if ($numrows_username < 1) {
+                $ref_userid = $ref_userid != null ? $ref_userid : "NULL";
+                $q = mysqli_query($db, "INSERT INTO user_registration(`full_name`,`user_name`,`user_email`,`user_phone`, `user_password`,`refral`) VALUES('$fullname','$username','$usermail','$userphone','$userpassword',$ref_userid)");
+                if ($q) {
+                    session_start();
+                    $_SESSION['user'] = $usermail;
+                    header("location: users/index.php");
+                } else {
+                    $error = "Something went wrong ";
+                }
+            } else {
+                $error = "Username already Used ";
             }
-            else
-            {
-                $error="Something went wrong ";
-            }
+        } else {
+            $error = "Email already Used ";
         }
-        else
-        {
-            $error="Email already Used ";
-        }
+    } else {
+        $error = "Kindly accept the terms and condittions ";
     }
-    else
-    {
-        $error="Kindly accept the terms and condittions ";
-    }
-  
 }
- ?>
+?>
 
 
 
 <!-- <!DOCTYPE html> -->
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title >Gold Ads Pack</title>
-      <base href="/goldads/" />
-   <?php include('inc/head.php')?>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Ads Pack</title>
+    <base href="/goldads/" />
+    <?php include('inc/head.php') ?>
 
 
 </head>
+
 <body>
 
 
-<?php include('inc/body.php')?>
+    <?php include('inc/body.php') ?>
 
 
 
-<!-- body slider portion -->
-<div class="container-fluid  slider home-slider" id="slider" >
-  <div class="inner">
-    <div class="container py-5 cn">
-      <div class="row no-gutter justify-content-center ">
-      <div class="col-xl-5 my-3">
-           <form action="">
+    <!-- body slider portion -->
+    <div class="container-fluid  slider home-slider" id="slider">
+        <div class="inner">
+            <div class="container py-5 cn">
+                <div class="row no-gutter justify-content-center ">
+                    <div class="col-xl-5 my-3">
+                        <form action="">
 
-            <marquee direction="up" scrollamount="0" style="color: white;" class="tect-center" >
-                <h2>GOLD ADS PACK!</h2>
-                Gold Ads Pack offers you to earn money on viewing ad units and attracting referrals. Watch commercial advertising, and we will credit up to 150% a month to your account. Attract referrals and get 10% from their deposits transferred to your account. It seems to be the most profitable offer on the market of paid advertising at the time! Just by viewing 10 ADS a day you will earn your % earning based on which ad pack you have bought. Withdrawals are possible at any given time and take up to 3 working days for safety reasons. For more information check out our F.A.Q. and Rules or Contact us if you have specific questions.
-              </marquee>
-           </form>
-        </div>
-        <div class="col-xl-2">
-        </div>
-          <div class="col-xl-5 my-3">
-                <form class="form-group d-block" action="" method="POST">
-                  <input type="text" class="form-control my-3 mb-4" placeholder="Full Name" name="full_name" required>
-                  <input type="text" class="form-control my-3 mb-4" placeholder="Username" name="user_name" required>
-                  <input type="email" class="form-control my-3 mb-4" placeholder="Email" name="user_email" required>
-                  <input type="password" class="form-control my-3 mb-3" placeholder="Password"  name="user_password" minlength="8" required>
-                  <p style="color: white;"><input type="checkbox" name="accept" required/> I Accept <a href="rules.php" target="_blank">terms & conditions</a>.</p>
-                  
-                  <button type="submit"  name="reg_btn" class="form-control btn btn-submit my-2 bg-selected text-light">Register now</button>
-                </form>
-          </div>
-              
-<?php
-if(isset($msg) || isset($error)) echo '<div class="col-xl-4 my-2">';
-if (isset($msg)) 
-{
-?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <strong>Congratulation!</strong> <?php echo $msg; ?>.
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                            <marquee direction="up" scrollamount="0" style="color: white;" class="tect-center">
+                                <h2>GOLD ADS PACK!</h2>
+                                Gold Ads Pack offers you to earn money on viewing ad units and attracting referrals. Watch commercial advertising, and we will credit up to 150% a month to your account. Attract referrals and get 10% from their deposits transferred to your account. It seems to be the most profitable offer on the market of paid advertising at the time! Just by viewing 10 ADS a day you will earn your % earning based on which ad pack you have bought. Withdrawals are possible at any given time and take up to 3 working days for safety reasons. For more information check out our F.A.Q. and Rules or Contact us if you have specific questions.
+                            </marquee>
+                        </form>
+                    </div>
+                    <div class="col-xl-2">
+                    </div>
+                    <div class="col-xl-5 my-3">
+                        <form class="form-group d-block" action="" method="POST">
+                            <input type="text" class="form-control my-3 mb-4" placeholder="Full Name" name="full_name" required>
+                            <input type="text" class="form-control my-3 mb-4" placeholder="Username" name="user_name" required>
+                            <input type="email" class="form-control my-3 mb-4" placeholder="Email" name="user_email" required>
+                            <input type="password" class="form-control my-3 mb-3" placeholder="Password" name="user_password" minlength="8" required>
+                            <p style="color: white;"><input type="checkbox" name="accept" required /> I Accept <a href="rules.php" target="_blank">terms & conditions</a>.</p>
+
+                            <button type="submit" name="reg_btn" class="form-control btn btn-submit my-2 bg-selected text-light">Register now</button>
+                        </form>
+                    </div>
+
+                    <?php
+                    if (isset($msg) || isset($error)) echo '<div class="col-xl-4 my-2">';
+                    if (isset($msg)) {
+                    ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Congratulation!</strong> <?php echo $msg; ?>.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php
+                    }
+                    if (isset($error)) {
+                    ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Oops!</strong> <?php echo $error; ?>.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php
+                    }
+                    if (isset($msg) || isset($error)) echo '</div>';
+                    ?>
+
+
                 </div>
-<?php
-}
-if (isset($error)) 
-{
-?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <strong>Oops!</strong> <?php echo $error; ?>.
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-<?php
-}
-if(isset($msg) || isset($error)) echo '</div>';
-?>
-             
 
-      </div>
+            </div>
+
+        </div>
 
     </div>
-
-   </div>
-
-</div>
-<!-- body our number section -->
-<div class="container-fluid my-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center my-5 font-weight-bold" style="font-size: 26px;">Our Numbers</div>
+    <!-- body our number section -->
+    <div class="container-fluid my-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center my-5 font-weight-bold" style="font-size: 26px;">Our Numbers</div>
                 <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12 my-4">
                     <?php
-                        $sum = mysqli_query($db,"SELECT * FROM earnings");
-                        $sumearn=0;
-                        while($row=mysqli_fetch_array($sum))
-                        {
-                            $sumearn += $row['price'];
-                        }
+                    $sum = mysqli_query($db, "SELECT * FROM earnings");
+                    $sumearn = 0;
+                    while ($row = mysqli_fetch_array($sum)) {
+                        $sumearn += $row['price'];
+                    }
                     ?>
-                    <h1  class="text-center" ><?php echo $sumearn; ?>$</h1>
+                    <h1 class="text-center"><?php echo $sumearn; ?>$</h1>
                     <div class="progress my-1">
                         <div class="progress-bar" style="width: 60%; background-color: #daa520;"><?php echo $sumearn; ?></div>
                     </div>
@@ -161,56 +159,55 @@ if(isset($msg) || isset($error)) echo '</div>';
                 </div>
                 <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12 my-4">
                     <?php
-                        $sum = mysqli_query($db,"SELECT * FROM withdrawreq WHERE status='paid'");
-                        $sumearn=0;
-                        while($row=mysqli_fetch_array($sum))
-                        {
-                            $sumearn += $row['amount'];
-                        }
+                    $sum = mysqli_query($db, "SELECT * FROM withdrawreq WHERE status='paid'");
+                    $sumearn = 0;
+                    while ($row = mysqli_fetch_array($sum)) {
+                        $sumearn += $row['amount'];
+                    }
                     ?>
-                    <h1  class="text-center" ><?php echo $sumearn; ?>$</h1>
+                    <h1 class="text-center"><?php echo $sumearn; ?>$</h1>
                     <div class="progress my-1">
                         <div class="progress-bar" style="width: 60%; background-color: #daa520;"><?php echo $sumearn; ?></div>
                     </div>
                     <p class="text-center my-1 font-weight-bold">Total Paid</p>
                 </div>
-  <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12 my-4">
-<?php
-$members = mysqli_query($db,"SELECT * FROM user_registration");
-$tmembers = mysqli_num_rows($members);
+                <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12 my-4">
+                    <?php
+                    $members = mysqli_query($db, "SELECT * FROM user_registration");
+                    $tmembers = mysqli_num_rows($members);
 
-?>
-    <h1   class="text-center" ><?php echo $tmembers; ?></h1>
-    <div class="progress my-1">
-        <div class="progress-bar" style="width: 30%; background-color: #daa520;"><?php echo $tmembers; ?></div>
+                    ?>
+                    <h1 class="text-center"><?php echo $tmembers; ?></h1>
+                    <div class="progress my-1">
+                        <div class="progress-bar" style="width: 30%; background-color: #daa520;"><?php echo $tmembers; ?></div>
 
+                    </div>
+                    <p class="text-center my-1 font-weight-bold">Total Members</p>
+                </div>
+                <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12 my-4">
+                    <?php
+                    $ads = mysqli_query($db, "SELECT * FROM ads");
+                    $tads = mysqli_num_rows($ads);
+
+                    ?>
+                    <h1 class="text-center"><?php echo $tads; ?></h1>
+                    <div class="progress my-1">
+                        <div class="progress-bar" style="width: 2%; background-color: #daa520;"><?php echo $tads; ?></div>
+
+                    </div>
+                    <p class="text-center my-1 font-weight-bold">Total Ads</p>
+                </div>
+                <div class="col-xl-2 col-md-2"></div>
+
+
+
+                <div class="col-xl-2 col-md-2"></div>
+            </div>
+
+        </div>
     </div>
-    <p class="text-center my-1 font-weight-bold">Total Members</p>
-  </div>
-  <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12 my-4">
-<?php
-$ads = mysqli_query($db,"SELECT * FROM ads");
-$tads = mysqli_num_rows($ads);
-
-?>
-    <h1 class="text-center"  ><?php echo $tads; ?></h1>
-    <div class="progress my-1">
-        <div class="progress-bar" style="width: 2%; background-color: #daa520;"><?php echo $tads; ?></div>
-
     </div>
-    <p class="text-center my-1 font-weight-bold">Total Ads</p>
-  </div>
-  <div class="col-xl-2 col-md-2"></div>
-  
-  
-
-  <div class="col-xl-2 col-md-2"></div>
-  </div>
-
- </div>
-</div>
-</div>
-<!-- Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -221,7 +218,7 @@ $tads = mysqli_num_rows($ads);
                     </button>
                 </div>
                 <div class="modal-body">
-                   <pre>
+                    <pre>
 The following Terms and Conditions control your membership in GoldAdsPack Service. You agree that you have read and understand this Agreement and that your membership in GoldAdsPack shall be subject to the following Terms and Conditions between you GoldAdsPack. These Terms and Conditions may be modified at any time by GoldAdsPack. Please review them from time to time since your ongoing use is subject to the terms and conditions as modified. Your continued participation in GoldAdsPack. after such modification shall be deemed to be your acceptance of any such modification. If you do not agree to these Terms and Conditions, please do not register to become a member of GoldAdsPack
 
 AGE Limit
@@ -293,9 +290,9 @@ GoldAdsPack Team
             </div>
         </div>
     </div>
-<!-- footer portion -->
-<?php include('users/inc/footer.php'); ?>
-<?php include('inc/script.php'); ?>
+    <!-- footer portion -->
+    <?php include('users/inc/footer.php'); ?>
+    <?php include('inc/script.php'); ?>
 
 
 </body>

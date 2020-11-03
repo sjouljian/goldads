@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +49,7 @@
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold" style="color: #007c88;">Withdraw Request</h6>
-                        <button class="btn btn-danger" onclick="window.location.href='paidwithdraw.php';">Paid Withdraw</button>
+                        <!-- <button class="btn btn-danger" onclick="window.location.href='paidwithdraw.php';">Paid Withdraw</button> -->
                     </div>
 <?php
 if(isset($_GET['id']))
@@ -112,13 +111,13 @@ if(isset($_GET['id']))
                         <tbody>
 <?php
 
-$query = ("SELECT * FROM withdrawreq WHERE status='verified'");
+$query = ("SELECT * FROM withdrawreq AS a LEFT JOIN user_registration AS b ON a.user_id = b.user_id WHERE status='not verified'");
                     
 $result = mysqli_query($db,$query);
 while ($row=mysqli_fetch_array($result))
 {
     $id=$row['id'];
-    $email=$row['email'];
+    $email=$row['user_email'];
     $wallet_id=$row['wallet_id'];
     $amount=$row['amount'];
     $status=$row['status'];

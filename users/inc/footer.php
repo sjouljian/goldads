@@ -27,7 +27,7 @@ if (!function_exists('getBaseUrl')) {
         <div class="row">
             <div class="col-xl-4 col-md-4 col-sm-12 my-2 text-center d-table">
                 <div class="card-body d-table-cell">
-                    <img src="<?php echo getBaseUrl(); ?>assets/img/coinpayments-logo.png" alt="Coin Payments Logo">
+                    <img src="assets/img/coinpayments-logo.png" alt="Coin Payments Logo">
                 </div>
             </div>
             <!-- <div class="col-xl-8 col-md-8 col-sm-12 my-2 text-center d-block font-weight-bold text-white">

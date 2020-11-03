@@ -53,7 +53,7 @@ if (!isset($_SESSION['user']))
       <!-- Pie Chart -->
         <?php include('inc/sidebar.php'); 
         $email=$_SESSION['user'];
-        $query=mysqli_query($db,"delete from package where email='$email'");
+        //$query=mysqli_query($db,"delete from package where email='$email'");
         ?>
 
         <div class="col-xl-8 col-lg-5">

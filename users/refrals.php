@@ -1,13 +1,14 @@
+<?php
+set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
+include_once 'inc/functions.php';
+?>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
-    <title >Gold Ads Pack</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    
-    <script src="https://kit.fontawesome.com/19d077c931.js" crossorigin="anonymous"></script>
+   <title >Gold Ads Pack</title>
+   <?php include('inc/head.php')?>
+
    
 </head>
 <body>
@@ -33,9 +34,9 @@
                 <div class="card-body">
 <?php
 $email=$_SESSION['user'];
-
+$username = $_SESSION['user_name']
 ?>
-                  <a href="https://www.goldadspack.com/?email=<?php echo $email; ?>#slider">https://www.goldadspack.com/?email=<?php echo $email; ?></a>
+                  <a href="https://www.goldadspack.com/?ref=<?php echo $username; ?>#slider">https://www.goldadspack.com/?ref=<?php echo $username; ?></a>
                 </div>
               </div>
                 <!-- ////////////////////// -->

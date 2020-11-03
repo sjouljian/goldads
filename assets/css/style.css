@@ -252,6 +252,16 @@
 a.btn{
     width: fit-content;
 }
+.ad-btn{
+    background-color: #a91c68;
+    color: #fff;
+    border:none!important;
+    outline:none!important;
+    padding:10px;
+}
+.ad-btn:active{
+    background-color:#daa628;
+}
 @media (max-width: 767px) {
     body, .container.countdown-template{
         height: auto!important;

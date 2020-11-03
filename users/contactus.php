@@ -1,5 +1,5 @@
 <?php
-set_include_path(get_include_path().":".$_SERVER["DOCUMENT_ROOT"]."/goldads");
+set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
 include('../connect/db.php');
 if (isset($_POST['submit'])) 
 {

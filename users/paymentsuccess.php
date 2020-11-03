@@ -1,5 +1,6 @@
 <?php
-session_start();
+set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
+include_once 'inc/functions.php';
 if (!isset($_SESSION['user'])) 
 {
   header("location: ../login.php");
@@ -9,28 +10,16 @@ if (!isset($_SESSION['user']))
 ?>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
    
-    <title >Gold Ads Pack</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    
-    <script src="https://kit.fontawesome.com/19d077c931.js" crossorigin="anonymous"></script>
+   <title >Gold Ads Pack</title>
+   <?php include('inc/head.php')?>
    
 </head>
 <body>
-<!-- header logo section -->
-<div class="container-fluid" style="background-color: #007c88;">
-  <div class="container">
-    <div class="row">
-      <div class="col-6">
-        <img src="../logo.png" id="l-logo"  onclick="window.location.href='index.php#slider';" height="70px" width="70px"/><br><span class="font-weight-bold" style="color: goldenrod;">Gold</span> <span  class="font-weight-bold" style="color:red;">Ads</span> <span   class="font-weight-bold"style="color:black;">Pack</span>
-      </div>  
-      
-    </div>     
-  </div>
-</div>
+<?php 
+      include_once 'inc/header.php';
+?>
 
 <!-- slider -->
 <div class="container-fluid how_slider">
@@ -55,7 +44,7 @@ if (!isset($_SESSION['user']))
             include('inc/sidebar.php'); 
             $email=$_SESSION['user'];
             $user_id=$_SESSION['user_id'];
-            $sql = "UPDATE package SET status='activated' WHERE user_id=$user_id";
+            $sql = "UPDATE package SET status='activated' WHERE user_id=$user_id ORDER BY id DESC LIMIT 1";
             $query=mysqli_query($db,$sql);
         ?>
 

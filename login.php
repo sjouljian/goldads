@@ -29,7 +29,7 @@ if (isset($_POST['login_btn']))
     // Call the function post_captcha
     $res = post_captcha($_POST['g-recaptcha-response']);
 
-    if ($res['success']) 
+    if (false) 
     {
         // What happens when the CAPTCHA wasn't checked
         $error="Please go back and make sure you check the security CAPTCHA box. ";
@@ -51,7 +51,7 @@ if (isset($_POST['login_btn']))
        {
             $result = mysqli_fetch_assoc($query);
             $user_id=$result['user_id'];
-            $chkdate = mysqli_query($db,"SELECT * FROM earnings WHERE user_id='$user_id' AND date='$crdate'"); 
+            /*$chkdate = mysqli_query($db,"SELECT * FROM earnings WHERE user_id='$user_id' AND date='$crdate'"); 
             $daterows = mysqli_num_rows($chkdate);
             if($daterows<1)
             {
@@ -97,11 +97,12 @@ if (isset($_POST['login_btn']))
                     }
                     $q =mysqli_query($db,"INSERT INTO earnings(`user_id`,`date`,`price`) VALUES('$user_id','$crdate','$price')");
                 }
-            }
+            }*/
            
             session_start();
             $_SESSION['user']=$email;
             $_SESSION['user_id']=$user_id;
+            $_SESSION['user_name']=$result['user_name'];
             header("location: users/index.php");
         }
     }

@@ -1,6 +1,7 @@
 <?php
-
-include("../connect/db.php");
+set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
+include_once 'connect/db.php';
+session_start();
 if(!isset($_SESSION['admin']))
 {
     header("location: login.php");

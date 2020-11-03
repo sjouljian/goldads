@@ -1,6 +1,8 @@
 <?php
 
-include_once '../connect/db.php';
+set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
+include_once 'connect/db.php';
+
 if (isset($_POST['submit'])) 
 {
     $email=$_POST['email'];
@@ -9,8 +11,9 @@ if (isset($_POST['submit']))
     $rows = mysqli_num_rows($check);
     if($rows>0)
     {
+        session_start();
+        $_SESSION['admin']=$email;
        header("location: index.php");
-       $_SESSION['admin']=$email;
     }
     else
     {

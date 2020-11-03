@@ -1,5 +1,5 @@
 <?php
-set_include_path(get_include_path().":".$_SERVER["DOCUMENT_ROOT"]."/goldads");
+set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
 session_start();
 include_once '../connect/db.php';
 include_once 'inc/functions.php';
@@ -12,8 +12,9 @@ else{
   $premiumPackageExists = premiumPackageExists();
   $useremail= $_SESSION['user'];
   $user_id= $_SESSION['user_id'];
+  $username = $_SESSION['user_name'];
   $allpackages = mysqli_query($db, "SELECT * FROM package_list WHERE published = 1");
-  $user_packages = mysqli_query($db, "SELECT * FROM package WHERE start_date < NOW() AND end_date > NOW() AND user_id='$user_id'");
+  $user_packages = mysqli_query($db, "SELECT * FROM package WHERE start_date < NOW() AND end_date > NOW() AND user_id='$user_id' AND status='activated'");
 }
 
 ?>
@@ -84,7 +85,7 @@ else{
         <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-              <b>Referral link: <a href="https://www.goldadspack.com/?email=<?php echo $email; ?>#slider">https://www.goldadspack.com/?email=<?php echo $email; ?></a</b>
+              <b>Referral link: <a href="https://www.goldadspack.com/?ref=<?php echo $username; ?>#slider">https://www.goldadspack.com/?ref=<?php echo $username; ?></a></b>
             </div>
           </div>
         </div>

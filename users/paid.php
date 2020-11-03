@@ -1,9 +1,14 @@
 <?php
-set_include_path(get_include_path().":".$_SERVER["DOCUMENT_ROOT"]."/goldads");
+set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
 include_once 'inc/functions.php';
 $activePackageExists = activePackageExists();
-if(!$activePackageExists){
-  header("location: users");
+if (!isset($_SESSION['user'])) {
+  header("location: ../login.php");
+}
+else{
+  if(!$activePackageExists){
+    header("location: users");
+  }  
 }
 ?>
 <html lang="en">
@@ -64,14 +69,19 @@ if ($activePackageExists)
 }
 
 $user_id=$_SESSION['user_id'];
-$query = ("SELECT * FROM ads AS t1 JOIN (SELECT id FROM ads WHERE NOT(`user_id` <=> $user_id) ORDER BY RAND() LIMIT 10) as t2 ON t1.id=t2.id");
+$query = ("SELECT t1.*
+FROM ads AS t1 JOIN 
+(SELECT ads.id, v.user_id AS viewads_user_id, v.ad_id AS viewads_ad_id, v.date AS viewads_date FROM ads
+LEFT JOIN viewads AS v ON $user_id = v.user_id AND ads.id = v.ad_id AND v.date >= CURDATE() AND v.date < (CURDATE() + INTERVAL 1 DAY)
+WHERE NOT(ads.`user_id` <=> $user_id) AND v.`ad_id` IS NULL
+ORDER BY RAND() LIMIT 10) as t2 ON t1.id=t2.id");
 $result = mysqli_query($db,$query);
 $count=1;
 while ($row=mysqli_fetch_array($result)) 
 {
 
 ?>
-          <button style="color:#007c88;" onclick="window.location.href='users/follow.php?link=<?php echo $row['id'] ?>';" formtarget="_blank"><b>ad - <?php echo $row['name']; ?>: click to Earn Cash</b></button>
+          <button class="ad-btn mb-3" onclick="window.location.href='users/follow.php?link=<?php echo $row['id'] ?>';">ad - <?php echo $row['name']; ?>: click to Earn Cash</button>
 <?php
 $count++;
 }

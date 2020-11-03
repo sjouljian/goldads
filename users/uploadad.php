@@ -1,7 +1,7 @@
 <?php
 
 $section_locked = true;
-set_include_path(get_include_path() . ";" . $_SERVER["DOCUMENT_ROOT"] . "/goldads");
+set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
 include_once '../connect/db.php';
 if (session_status() == PHP_SESSION_NONE) {
   session_start();

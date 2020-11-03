@@ -4,12 +4,12 @@
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 <?php
 include '../../connect/db.php';
-$email=$_SESSION['user'];
-$sum = mysqli_query($db,"SELECT * FROM earnings WHERE email='$email'");
+$email=$_SESSION['user_id'];
+$sum = mysqli_query($db,"SELECT * FROM user_registration WHERE user_id='$email'");
 $sumearn=0;
 while($row=mysqli_fetch_array($sum))
 {
-  $sumearn += $row['price'];
+  $sumearn += $row['balance'];
 }
 
 ?>

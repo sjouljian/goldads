@@ -5,31 +5,29 @@ if (isset($_POST['login_btn']))
 {
     function post_captcha($user_response) 
     {
-        $fields_string = '';
-        $fields = array(
-            'secret' => '6LecP8UZAAAAAF0GUHCHcaEAbXUTsjs2D9qBHdQU',
-            'response' => $user_response
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array(
+          'secret' => '6Lc8tN4ZAAAAAIAvmE7oX93K_DKH0sXQcS-EHUDq',
+          'response' => $user_response
         );
-        foreach($fields as $key=>$value)
-        $fields_string .= $key . '=' . $value . '&';
-        $fields_string = rtrim($fields_string, '&');
+        $options = array(
+          'http' => array (
+            'header' => 'Content-Type: application/x-www-form-urlencoded',
+            'method' => 'POST',
+            'content' => http_build_query($data)
+          )
+        );
+        $context  = stream_context_create($options);
+        $verify = file_get_contents($url, false, $context);
+        $captcha_success=json_decode($verify);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
-        curl_setopt($ch, CURLOPT_POST, count($fields));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, True);
-
-        $result = curl_exec($ch);
-        curl_close($ch);
-
-        return json_decode($result, true);
+        return $captcha_success;
     }
 
     // Call the function post_captcha
     $res = post_captcha($_POST['g-recaptcha-response']);
 
-    if (false) 
+    if (!$res->success) 
     {
         // What happens when the CAPTCHA wasn't checked
         $error="Please go back and make sure you check the security CAPTCHA box. ";
@@ -182,7 +180,7 @@ if (isset($error))
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
                     <br>
-                    <div class="g-recaptcha" data-sitekey="6LecP8UZAAAAABjR0OAgJWiTEIPJkuQJM2CTBuJA"></div>
+                    <div class="g-recaptcha" data-sitekey="6Lc8tN4ZAAAAAI3FuFbvjaPEMUk0EurX28mnYH7R"></div>
                     
                   </div>
                   

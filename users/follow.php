@@ -1,5 +1,5 @@
 <?php
-set_include_path(get_include_path() . ";" . $_SERVER["DOCUMENT_ROOT"] . "/goldads");
+set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
 session_start();
 include_once '../connect/db.php';
 include_once 'inc/functions.php';

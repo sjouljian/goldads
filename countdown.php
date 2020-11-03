@@ -63,8 +63,7 @@ if (isset($_POST['reg_btn']))
 <head>
     <title >Gold Ads Pack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <base href="/goldads/" />
-    <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css">
+    <base href="/goldads/" />    <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css">
     <link rel="stylesheet" href="assets/css/style.css?v=3534">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="icon" type="image/png" href="favicon.png" />

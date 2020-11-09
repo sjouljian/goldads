@@ -179,7 +179,9 @@ if (isset($error))
                       -->
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
-                    <br>
+                    <div class="my-3">
+                      <a href="forgot.php">Forgot password?</a>
+                    </div>
                     <div class="g-recaptcha" data-sitekey="6Lc8tN4ZAAAAAI3FuFbvjaPEMUk0EurX28mnYH7R"></div>
                     
                   </div>

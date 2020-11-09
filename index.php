@@ -85,7 +85,7 @@ if (isset($_POST['reg_btn'])) {
                         <form action="">
 
                             <marquee direction="up" scrollamount="0" style="color: white;" class="tect-center">
-                                <h2>GOLD ADS PACK!</h2>
+                                <h2>EARN UP TO 100$ A DAY WITHIN FEW MINUTES BY VIEWING 10 ADS A DAY!</h2>
                                 Gold Ads Pack offers you to earn money on viewing ad units and attracting referrals. Watch commercial advertising, and we will credit up to 150% a month to your account. Attract referrals and get 10% from their deposits transferred to your account. It seems to be the most profitable offer on the market of paid advertising at the time! Just by viewing 10 ADS a day you will earn your % earning based on which ad pack you have bought. Withdrawals are possible at any given time and take up to 3 working days for safety reasons. For more information check out our F.A.Q. and Rules or Contact us if you have specific questions.
                             </marquee>
                         </form>

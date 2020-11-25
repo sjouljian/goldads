@@ -142,7 +142,7 @@ if (isset($_POST['reg_btn'])) {
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center my-5 font-weight-bold" style="font-size: 26px;">Our Numbers</div>
-                <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12 my-4">
+                <div class="col my-4">
                     <?php
                     $sum = mysqli_query($db, "SELECT * FROM earnings");
                     $sumearn = 0;
@@ -156,7 +156,7 @@ if (isset($_POST['reg_btn'])) {
                     </div>
                     <p class="text-center my-1 font-weight-bold">Total Earned</p>
                 </div>
-                <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12 my-4">
+                <div class="col my-4">
                     <?php
                     $sum = mysqli_query($db, "SELECT * FROM withdrawreq WHERE status='paid'");
                     $sumearn = 0;
@@ -170,7 +170,7 @@ if (isset($_POST['reg_btn'])) {
                     </div>
                     <p class="text-center my-1 font-weight-bold">Total Paid</p>
                 </div>
-                <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12 my-4">
+                <div class="col my-4">
                     <?php
                     $members = mysqli_query($db, "SELECT * FROM user_registration");
                     $tmembers = mysqli_num_rows($members);
@@ -183,7 +183,7 @@ if (isset($_POST['reg_btn'])) {
                     </div>
                     <p class="text-center my-1 font-weight-bold">Total Members</p>
                 </div>
-                <div class="col-xl-3 col-md-3 col-sm-12 col-xs-12 my-4">
+                <div class="col my-4">
                     <?php
                     $ads = mysqli_query($db, "SELECT * FROM ads");
                     $tads = mysqli_num_rows($ads);
@@ -196,11 +196,19 @@ if (isset($_POST['reg_btn'])) {
                     </div>
                     <p class="text-center my-1 font-weight-bold">Total Ads</p>
                 </div>
-                <div class="col-xl-2 col-md-2"></div>
+                <div class="col my-4">
+                    <?php
+                    $ads = mysqli_query($db, "SELECT id FROM viewads");
+                    $tads = mysqli_num_rows($ads);
 
+                    ?>
+                    <h1 class="text-center"><?php echo $tads; ?></h1>
+                    <div class="progress my-1">
+                        <div class="progress-bar" style="width: 2%; background-color: #daa520;"><?php echo $tads; ?></div>
 
-
-                <div class="col-xl-2 col-md-2"></div>
+                    </div>
+                    <p class="text-center my-1 font-weight-bold">Total Ads Visits</p>
+                </div>
             </div>
 
         </div>
@@ -291,7 +299,6 @@ GoldAdsPack Team
     </div>
     <!-- footer portion -->
     <?php include('users/inc/footer.php'); ?>
-    <?php include('inc/script.php'); ?>
 
 
 </body>

@@ -1,4 +1,5 @@
 <?php
+
 if (!function_exists('getBaseUrl')) {
     function getBaseUrl()
     {
@@ -47,7 +48,7 @@ if (!function_exists('getBaseUrl')) {
         </div>
     </div>
 </div>
-
+<?php include('inc/script.php'); ?>
 <script type="text/javascript">
     function display_c() {
         var refresh = 1000; // Refresh rate in milli seconds

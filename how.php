@@ -68,7 +68,6 @@
 
 <!-- footer part -->
 <?php include('users/inc/footer.php'); ?>
-<?php include('inc/script.php'); ?>
 
     </body>
 

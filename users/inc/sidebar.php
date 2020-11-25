@@ -51,6 +51,7 @@ function getBaseUrl()
           <div class="card-body left-sidebar">
 
             <a href="users/index.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; ">Dashboard</a>
+            <a href="users/profile.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; ">Profile</a>
             <a href="users/uploadad.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; ">My ads</a>
             <?php if(activePackageExists()){?>
                 <a href="users/paid.php"  class="btn mb-2 bg-light " style="background-color: #007c88; color:black; "> Ads</a>

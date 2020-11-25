@@ -81,10 +81,7 @@ VALUES ('" . $email . "', '" . $key . "', '" . $expDate . "');"
         $output = '<p>Dear user,</p>';
         $output .= '<p>Please click on the following link to reset your password.</p>';
         $output .= '<p>-------------------------------------------------------------</p>';
-        $output .= '<p><a href="https://www.goldadspack.com/reset-password.php?
-key=' . $key . '&email=' . $email . '&action=reset" target="_blank">
-https://www.goldadspack.com/reset-password.php
-?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
+        $output .= '<p><a href="https://www.goldadspack.com/reset-password.php?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">https://www.goldadspack.com/reset-password.php?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
         $output .= '<p>-------------------------------------------------------------</p>';
         $output .= '<p>Please be sure to copy the entire link into your browser.
 The link will expire after 1 day for security reason.</p>';
@@ -105,7 +102,10 @@ your account and change your security password as someone may have guessed it.</
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
         $mail->Username   = 'goladspack533@gmail.com';                     // SMTP username
         $mail->Password   = 'goldads@533';
-        $mail->Port = 25;
+        $mail->SMTPAuth = true;  // authentication enabled
+        $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
+        $mail->SMTPAutoTLS = false;
+        $mail->Port = 587;
         $mail->IsHTML(true);
         $mail->From = "noreply@goldadspack.com";
         $mail->FromName = "Gold Ads Pack";
@@ -120,8 +120,11 @@ your account and change your security password as someone may have guessed it.</
             $msg = "An email has been sent to you with instructions on how to reset your password.";
         }
     }
-}} else {
+}}
+
 ?>
+
+
     <!DOCTYPE html>
     <html lang="en">
 
@@ -148,7 +151,7 @@ your account and change your security password as someone may have guessed it.</
                         <?php
                         if (isset($msg)) {
                             ?>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <div class="alert alert-success alert-dismissible mx-auto fade show" role="alert">
                                     <strong><?php echo $msg; ?></strong>.
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -158,14 +161,12 @@ your account and change your security password as someone may have guessed it.</
                         }
                         if (isset($error) && $error != "") {
                         ?>
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs1-2">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <div class="alert alert-danger alert-dismissible mx-auto fade show" role="alert">
                                     <strong>Oops!</strong> <?php echo $error; ?>.
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                            </div>
                         <?php
                         }
                         ?>
@@ -190,7 +191,6 @@ your account and change your security password as someone may have guessed it.</
                                 <button type="submit" name="forgot_btn" class="btn btn-submit btn-lg btn-block" tabindex="4">Submit</button>
                             </div>
                             </form>
-                        <?php } ?>
 
                         </div>
                     </div>
@@ -198,8 +198,6 @@ your account and change your security password as someone may have guessed it.</
             </div>
         </div>
         <?php include('users/inc/footer.php'); ?>
-
-        <?php include('inc/script.php'); ?>
 
     </body>
 

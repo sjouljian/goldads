@@ -5,7 +5,7 @@ $error = "";
 
 if (
     isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["action"])
-    && ($_GET["action"] == "reset") && !isset($_POST["action"])
+    && ($_GET["action"] == "reset")
 ) {
     $key = $_GET["key"];
     $email = $_GET["email"];
@@ -76,6 +76,17 @@ Click here</a> to reset password.</p>';
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs1-2">
                                     <h1 class="text-center mt-5 mb-5 text-light">Forgot Password</h1>
                                 </div>
+                      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+                            <div class="card card-primary">
+
+                                <div class="card-body">
                                 <?php
                         if (isset($msg)) {
                             ?>
@@ -89,27 +100,15 @@ Click here</a> to reset password.</p>';
                         }
                         if (isset($error) && $error != "") {
                         ?>
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs1-2">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <strong>Oops!</strong> <?php echo $error; ?>.
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                            </div>
                         <?php
                         }
                         ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container mt-5">
-                    <div class="row">
-                        <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-                            <div class="card card-primary">
-
-                                <div class="card-body">
                                 <?php if(!isset($msg)){?>
                                     <form method="post" action="" name="update">
                                         <input type="hidden" name="action" value="update" />
@@ -120,7 +119,7 @@ Click here</a> to reset password.</p>';
 
                                         <input type="hidden" name="email" value="<?php echo $email; ?>" />
 
-                                        <input type="submit" value="Reset Password" />
+                                        <input type="submit" class="btn btn-submit mx-auto mt-3" style="display: block;" value="Reset Password" />
                                     </form>
                                 <?php } ?>
                                 </div>

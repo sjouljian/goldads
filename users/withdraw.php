@@ -1,5 +1,13 @@
 <?php
 set_include_path(get_include_path().";".$_SERVER["DOCUMENT_ROOT"]."/goldads");
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+require 'users/phpmailer/vendor/autoload.php';
+
 include_once 'inc/functions.php';
 include ('../connect/db.php');
 if (!isset($_SESSION['user'])) {
@@ -27,6 +35,42 @@ if(isset($_POST['withdraw']))
             $new_balance = $current_balance - $amount;
             mysqli_query($db,"UPDATE user_registration SET balance='$new_balance' WHERE `user_id`='$user_id'");
             $msg = "Withdraw request submitted successfully";
+
+            $output = '<p>Dear Admin,</p>';
+            $output .= '<p>The following withdrawal request was made on your website.</p>';
+            $output .= '<p>-------------------------------------------------------------</p>';
+            $output .= '<p><b>Full name: </b>'.$current_user['name'].'</p>';
+            $output .= '<p><b>Email: </b>'.$current_user['email'].'</p>';
+            $output .= '<p><b>Amount: </b>'.$amount.'</p>';
+            $output .= '<p>Gold Ads Pack Team</p>';
+            $body = $output;
+            $subject = "Inquiry - Gold Ads Pack";
+        
+            $fromserver = "info@goldadspack.com";
+        
+            $mail = new PHPMailer();
+            $mail->IsSMTP();
+            $mail->Host       = 'mocha3033.mochahost.com';                    // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            $mail->Username   = 'info@goldadspack.com';                     // SMTP username
+            $mail->Password   = 'iNW%RK&K!l_3';
+            $mail->SMTPAuth = true;  // authentication enabled
+            $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
+            $mail->SMTPAutoTLS = false;
+            $mail->Port = 587;
+            $mail->IsHTML(true);
+            $mail->From = "noreply@goldadspack.com";
+            $mail->FromName = "Gold Ads Pack";
+            $mail->Sender = $fromserver; // indicates ReturnPath header
+            $mail->Subject = $subject;
+            $mail->Body = $body;
+            $mail->AddAddress("info@goldadspack.com");
+        
+            if (!$mail->Send()) {
+                $error = $mail->ErrorInfo;
+            } else {
+                //$msg = "Message sent successfully.";
+            }
             //header("location: phpmailer/index.php?email=$email");
         }
         else

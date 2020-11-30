@@ -1,3 +1,55 @@
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+require 'users/phpmailer/vendor/autoload.php';
+
+if(isset($_POST['submit']) && isset($_POST['msg']))
+{
+    
+    $output = '<p>Dear Admin,</p>';
+    $output .= '<p>The following inquiry form was submitted on your website.</p>';
+    $output .= '<p>-------------------------------------------------------------</p>';
+    $output .= '<p><b>Full name: </b>'.$_POST['fullName'].'</p>';
+    $output .= '<p><b>Phone: </b>'.$_POST['phone'].'</p>';
+    $output .= '<p><b>Email: </b>'.$_POST['email'].'</p>';
+    $output .= '<p><b>Subject: </b>'.$_POST['subject'].'</p>';
+    $output .= '<p><b>Message: </b>'.$_POST['msg'].'</p>';
+    $output .= '<p>Gold Ads Pack Team</p>';
+    $body = $output;
+    $subject = "Inquiry - Gold Ads Pack";
+
+    $fromserver = "info@goldadspack.com";
+
+    $mail = new PHPMailer();
+    $mail->IsSMTP();
+    $mail->Host       = 'mocha3033.mochahost.com';                    // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = 'info@goldadspack.com';                     // SMTP username
+    $mail->Password   = 'iNW%RK&K!l_3';
+    $mail->SMTPAuth = true;  // authentication enabled
+    $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
+    $mail->SMTPAutoTLS = false;
+    $mail->Port = 587;
+    $mail->IsHTML(true);
+    $mail->From = "noreply@goldadspack.com";
+    $mail->FromName = "Gold Ads Pack";
+    $mail->Sender = $fromserver; // indicates ReturnPath header
+    $mail->Subject = $subject;
+    $mail->Body = $body;
+    $mail->AddAddress("info@goldadspack.com");
+
+    if (!$mail->Send()) {
+        $error = $mail->ErrorInfo;
+    } else {
+        $msg = "Message sent successfully.";
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +80,20 @@
 <div class="container-fluid">
     <div class="container my-5">
         <div class="row">
-            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs1-12" style="color:#007c88;"></div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <?php
+                    if (isset($msg)) {
+                        ?>
+                            <div class="alert alert-success alert-dismissible mx-auto fade show" role="alert">
+                                <strong><?php echo $msg; ?></strong>.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php
+                    }
+                ?>
+            </div>
             <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs1-12 mt-55" style="color:#007c88;">
             <div class="card shadow">
                 <!-- Card Header - Dropdown -->
@@ -40,28 +105,28 @@
                 <form class="form-horizontal" method="POST">
                 <div class="form-group">
                      <div class="col-sm-12">
-                        <input type="email" class="form-control" name="fullName" placeholder="Enter name">
+                        <input type="text" class="form-control" name="fullName" placeholder="Enter name" required>
                         </div>
                     </div>
                     <div class="form-group">
                      <div class="col-sm-12">
-                        <input type="email" class="form-control" name="phone" placeholder="Enter phone number">
+                        <input type="tel" class="form-control" name="phone" placeholder="Enter phone number" required>
                         </div>
                     </div>
                     <div class="form-group">
                      <div class="col-sm-12">
-                        <input type="email" class="form-control" name="email" placeholder="Enter email">
+                        <input type="email" class="form-control" name="email" placeholder="Enter email" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                        <input type="text" class="form-control" name="subject" placeholder="Enter Subject">
+                        <input type="text" class="form-control" name="subject" placeholder="Enter Subject" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-12">
                         <div class="checkbox">
-                            <textarea class="form-control" name="msg" cols="84" rows="4" placeholder="Message"></textarea>
+                            <textarea class="form-control" name="msg" cols="84" rows="4" placeholder="Message" required></textarea>
                         </div>
                         </div>
                     </div>

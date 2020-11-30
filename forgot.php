@@ -94,14 +94,14 @@ your account and change your security password as someone may have guessed it.</
         $subject = "Password Reset - Gold Ads Pack";
 
         $email_to = $email;
-        $fromserver = "goladspack533@gmail.com";
+        $fromserver = "info@goldadspack.com";
 
         $mail = new PHPMailer();
         $mail->IsSMTP();
-        $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+        $mail->Host       = 'mocha3033.mochahost.com';                    // Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username   = 'goladspack533@gmail.com';                     // SMTP username
-        $mail->Password   = 'goldads@533';
+        $mail->Username   = 'info@goldadspack.com';                     // SMTP username
+        $mail->Password   = 'iNW%RK&K!l_3';
         $mail->SMTPAuth = true;  // authentication enabled
         $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
         $mail->SMTPAutoTLS = false;
